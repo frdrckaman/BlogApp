@@ -1,0 +1,1 @@
+Learning to create Blog app using Django 3
