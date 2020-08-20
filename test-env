@@ -1,9 +1,9 @@
-DJANGO_SECRET_KEY=duw(2b+*kubmfl&l5uhd12v-z--nlnt%bk%vd_==qzdo5t9ohv
+DJANGO_SECRET_KEY=secret_key_goes_here
 DJANGO_DEBUG=True
 DJANGO_EDC_BOOTSTRAP=3
 DJANGO_LOGIN_REDIRECT_URL=home
 DJANGO_EMAIL_HOST=smtp.gmail.com
-DJANGO_EMAIL_HOST_USER=frdrckdeveloper@gmail.com
+DJANGO_EMAIL_HOST_USER=email@domain.com
 DJANGO_EMAIL_HOST_PASSWORD=password
 DJANGO_EMAIL_PORT=587
 DJANGO_EMAIL_USE_TLS=True
