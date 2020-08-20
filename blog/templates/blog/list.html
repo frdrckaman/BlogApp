@@ -5,8 +5,12 @@
     {% for post in posts %}
     <h2>
         <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}
+            {{ post.title }}
         </a>
+{#        Link to add post from admin#}
+{#        <a href="{{ post.get_admin_url }}">#}
+{#            {{ post.title }}#}
+{#        </a>#}
     </h2>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}

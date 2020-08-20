@@ -1,17 +1,27 @@
 import os
-
+import environ
+from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ENV_DIR = str(Path(os.path.join(BASE_DIR, '.env')))
+
+env = environ.Env(
+    DJANGO_DEBUG=(bool, False),
+)
+
+environ.Env.read_env(ENV_DIR)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=-&28azj8t^a7f=h(6vjf#2=1=g9&0lv*)84)hgd3mjp4@ti$g'
+SECRET_KEY = env.str('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -58,6 +68,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BlogApp.wsgi.application'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = env.str('DJANGO_EMAIL_HOST')
+EMAIL_HOST_USER = env.str('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('DJANGO_EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env.int('DJANGO_EMAIL_PORT')
+EMAIL_USE_TLS = env('DJANGO_EMAIL_USE_TLS')
 
 
 # Database

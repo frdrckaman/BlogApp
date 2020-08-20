@@ -1,3 +1,6 @@
+from pprint import pprint
+
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -25,6 +28,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
+
+    def get_admin_url(self):
+        return reverse("admin:%s_%s_add" % (self._meta.app_label, self._meta.model_name))
+        # link to edit post on django admin
+        # return reverse("admin:%s_%s_change" % (self._meta.app_label, self._meta.model_name), args=(self.id,))
 
 
 class Meta:
