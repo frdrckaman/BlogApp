@@ -25,6 +25,7 @@ DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -35,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    # 'django.contrib.postgres'
     'blog.apps.BlogConfig',
     'taggit',
 ]
@@ -82,10 +86,21 @@ EMAIL_USE_TLS = env('DJANGO_EMAIL_USE_TLS')
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DJANGO_POSTGRES_NAME'),
+        'USER': env('DJANGO_POSTGRES_USER'),
+        'PASSWORD': env('DJANGO_POSTGRES_PASSWORD'),
+        'HOST': env('DJANGO_POSTGRES_HOST'),
+        'PORT': env('DJANGO_POSTGRES_PORT'),
     }
 }
 
